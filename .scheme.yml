@@ -1,0 +1,9 @@
+---
+- name: DB_HOST
+  type: text
+- name: DB_PORT
+  type: integer
+- name: DB_NAME
+  type: text
+- name: DB_USER
+  type: text

@@ -1,0 +1,8 @@
+dist/
+dist-newstyle/
+.ghc.environment.*
+logs/
+.env.dev
+.env.test
+.env
+result
