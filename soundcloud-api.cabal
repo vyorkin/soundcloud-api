@@ -34,6 +34,8 @@ common core
                      , postgresql-simple-migration ^>= 0.1
                      , resource-pool ^>= 0.2
                      , aeson ^>= 1.4
+                     , http-api-data >= 0.4
+                     , http-types >= 0.12
                      , servant ^>= 0.16
                      , servant-server ^>= 0.16
                      , jwt ^>= 0.10
@@ -81,13 +83,24 @@ library
   import:              core
   hs-source-dirs:      src
   mixins:              base hiding (Prelude)
-                     , relude (Relude as Prelude, Relude.Unsafe)
-
+  exposed-modules:     Prelude
+                     , SoundCloud
+                     , SoundCloud.App
+                     , SoundCloud.App.Env
+                     , SoundCloud.App.Monad
+                     , SoundCloud.Config
+                     , SoundCloud.Core
+                     , SoundCloud.Core.User
+                     , SoundCloud.Core.Session
+                     , SoundCloud.Core.Jwt
+                     , SoundCloud.Db
+                     , SoundCloud.Server
+                     , SoundCloud.Server.Auth
+                     , System.Environment.Extra
 
 executable soundcloud-server
   import:              exe
   mixins:              base hiding (Prelude)
-                     , relude (Relude as Prelude, Relude.Unsafe)
   hs-source-dirs:      server
   main-is:             Main.hs
   build-depends:       soundcloud-api
@@ -112,7 +125,6 @@ test-suite soundcloud-test
                        -fno-warn-missing-export-lists
   type:                exitcode-stdio-1.0
   mixins:              base hiding (Prelude)
-                     , relude (Relude as Prelude, Relude.Unsafe)
   build-depends:       soundcloud-api
                      , tasty ^>= 1.2
                      , tasty-expected-failure ^>= 0.11
